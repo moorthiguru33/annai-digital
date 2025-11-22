@@ -16,6 +16,11 @@
                     <i class="fas fa-lightbulb"></i> Annai<span class="highlight">Digital</span>
                 </a>
             </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html" class="active">Services</a></li>
@@ -24,46 +29,53 @@
         </div>
     </nav>
 
-    <header class="page-header">
+    <header class="section bg-alt" style="padding-top: 120px; text-align: center;">
         <div class="container">
-            <h1>Our Complete Services</h1>
-            <p>From concept to installation, we do it all.</p>
+            <h1 class="section-title">Our Premium Services</h1>
+            <p class="section-desc">From concept to installation, we provide world-class signage solutions.</p>
         </div>
     </header>
 
     <section class="section">
         <div class="container">
-            <div class="services-grid-full">
-                <div class="service-detail-card">
+            <div class="services-grid-full" style="display: grid; gap: 3rem;">
+                
+                <!-- Service 1 -->
+                <div class="feature-card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
                     <div class="svc-img">
-                        <img src="images/services/trimcap-led.jpg" alt="Trimcap LED" onerror="this.src='https://placehold.co/600x400/1a1a2e/FFF?text=Trimcap'">
+                        <img src="images/services/trimcap-led.jpg" alt="Trimcap LED" onerror="this.src='https://placehold.co/600x400/1a1a2e/FFF?text=Trimcap+LED'">
                     </div>
                     <div class="svc-content">
                         <h3>Trimcap LED Letters</h3>
-                        <p>The industry standard for illuminated letters. Features a durable metal or plastic return (side) with an acrylic face. Perfect for outdoor visibility.</p>
-                        <ul class="svc-features">
-                            <li><i class="fas fa-check"></i> Weatherproof</li>
+                        <p style="color: var(--text-light); margin: 1rem 0;">The industry standard for illuminated letters. Features a durable metal or plastic return (side) with an acrylic face. Perfect for outdoor visibility.</p>
+                        <ul style="color: var(--secondary);">
+                            <li><i class="fas fa-check"></i> Weatherproof & Durable</li>
                             <li><i class="fas fa-check"></i> High Brightness</li>
                             <li><i class="fas fa-check"></i> 5 Year Warranty</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="service-detail-card">
+                <!-- Service 2 (FIXED GIF IMAGE HERE) -->
+                <div class="feature-card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
                     <div class="svc-img">
-                        <img src="images/services/liquid-led.jpg" alt="Liquid LED" onerror="this.src='https://placehold.co/600x400/1a1a2e/FFF?text=Liquid+LED'">
+                        <!-- CHANGED .jpg TO .gif BELOW -->
+                        <img src="images/services/liquid-led.gif" alt="Liquid LED Animation" onerror="this.src='https://placehold.co/600x400/1a1a2e/FFF?text=Liquid+LED+Animation'">
                     </div>
                     <div class="svc-content">
                         <h3>Liquid Acrylic LED</h3>
-                        <p>A premium, rimless solution where liquid acrylic cures to form a seamless, glossy face. Offers the most elegant light diffusion.</p>
-                         <ul class="svc-features">
-                            <li><i class="fas fa-check"></i> Seamless Finish</li>
-                            <li><i class="fas fa-check"></i> Custom Colors</li>
+                        <p style="color: var(--text-light); margin: 1rem 0;">A premium, rimless solution where liquid acrylic cures to form a seamless, glossy face. Offers the most elegant light diffusion.</p>
+                         <ul style="color: var(--secondary);">
+                            <li><i class="fas fa-check"></i> Seamless Glossy Finish</li>
+                            <li><i class="fas fa-check"></i> Custom Colors Available</li>
+                            <li><i class="fas fa-check"></i> Premium Look</li>
                         </ul>
                     </div>
                 </div>
                 
-                </div>
+                <!-- Add more service blocks here using the same structure -->
+
+            </div>
         </div>
     </section>
 
@@ -72,5 +84,6 @@
             <p>&copy; 2025 Annai Digital Signage.</p>
         </div>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
