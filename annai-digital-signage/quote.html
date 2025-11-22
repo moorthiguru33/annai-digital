@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Estimator | Annai Digital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo"><a href="index.html">Annai<span class="highlight">Digital</span></a></div>
+            <a href="index.html" class="btn-nav">Back to Home</a>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Smart Price Estimator</h1>
+            <p>Get an approximate cost for your signage or printing needs instantly.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="tool-container">
+                <div class="tool-sidebar">
+                    <h3><i class="fas fa-cog"></i> Configure</h3>
+                    
+                    <div class="form-group">
+                        <label>Service Category</label>
+                        <select id="serviceCategory" onchange="updateOptions()">
+                            <option value="signage">Sign Board / LED</option>
+                            <option value="printing">Paper / Printing</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="signageOptions">
+                        <label>Material Type</label>
+                        <select id="materialType">
+                            <option value="300">Flex Banner (Normal)</option>
+                            <option value="450">Star Flex (High Quality)</option>
+                            <option value="1200">LED Board (Basic)</option>
+                            <option value="2500">Liquid Acrylic LED (Premium)</option>
+                            <option value="1800">ACP Sign Board</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group hidden" id="printingOptions">
+                        <label>Product Type</label>
+                        <select id="printType">
+                            <option value="1.5">Visiting Cards (per card)</option>
+                            <option value="5">Pamphlets (A5 Size)</option>
+                            <option value="150">Bill Book (Duplicate)</option>
+                            <option value="850">Roll-up Standee</option>
+                        </select>
+                    </div>
+
+                    <div class="dimensions-group" id="dims">
+                        <div class="form-group">
+                            <label>Height (ft)</label>
+                            <input type="number" id="height" value="1" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Width (ft)</label>
+                            <input type="number" id="width" value="1" min="1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group hidden" id="qtyBox">
+                        <label>Quantity</label>
+                        <input type="number" id="quantity" value="100" min="100">
+                    </div>
+
+                    <button class="btn btn-primary w-100" onclick="calculatePrice()">Calculate Estimate</button>
+                </div>
+
+                <div class="tool-result">
+                    <div class="result-box">
+                        <span>Estimated Cost</span>
+                        <h2 id="finalPrice">₹ 0.00</h2>
+                        <p class="disclaimer">*This is an approximate calculation. Final price may vary based on design complexity and installation.</p>
+                        <a href="contact.html" class="btn btn-outline mt-3">Request Official Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
