@@ -12,6 +12,11 @@
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo"><a href="index.html">Annai<span class="highlight">Digital</span></a></div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="quote.html" class="btn-nav">Get Quote</a></li>
@@ -19,49 +24,53 @@
         </div>
     </nav>
 
-    <div class="contact-split">
-        <div class="contact-info-panel">
-            <h1>Get in Touch</h1>
-            <p class="mb-4">Have a question or need a custom design? Message us directly.</p>
-            
-            <div class="contact-form-box">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="conName" placeholder="Enter your name">
+    <div class="container" style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="tool-container">
+            <!-- Form Section -->
+            <div class="contact-info-panel">
+                <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Get in Touch</h1>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">Have a question or need a custom design? Message us directly.</p>
+                
+                <div class="contact-form-box">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="conName" placeholder="Enter your name" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" id="conPhone" placeholder="Enter mobile number" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="conMsg" rows="4" placeholder="What do you need?" class="input-field"></textarea>
+                    </div>
+                    <button class="btn btn-whatsapp" onclick="sendContactToWhatsapp()">
+                        <i class="fab fa-whatsapp"></i> Send Message on WhatsApp
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label>Mobile Number</label>
-                    <input type="tel" id="conPhone" placeholder="Enter mobile number">
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea id="conMsg" rows="3" placeholder="What do you need?"></textarea>
-                </div>
-                <button class="btn btn-whatsapp w-100" onclick="sendContactToWhatsapp()">
-                    <i class="fab fa-whatsapp"></i> Send Message on WhatsApp
-                </button>
-            </div>
 
-            <div class="info-grid mt-3">
-                <div class="info-row">
-                    <i class="fas fa-phone-alt"></i>
-                    <div>
-                        <strong>Call Us</strong>
-                        <p>+91 98848 85789</p>
+                <div class="info-grid" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="info-row" style="display: flex; gap: 1rem; align-items: center;">
+                        <i class="fas fa-phone-alt" style="color: var(--primary);"></i>
+                        <div>
+                            <strong>Call Us</strong>
+                            <p style="color: var(--text-light);">+91 98848 85789</p>
+                        </div>
+                    </div>
+                    <div class="info-row" style="display: flex; gap: 1rem; align-items: center;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
+                        <div>
+                            <strong>Visit Us</strong>
+                            <p style="color: var(--text-light);">4, Grand Northern Trunk Rd, Madhavaram, Chennai - 600110</p>
+                        </div>
                     </div>
                 </div>
-                <div class="info-row">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <strong>Visit Us</strong>
-                        <p>4, Grand Northern Trunk Rd, Madhavaram, Chennai - 600110</p>
-                    </div>
-                </div>
             </div>
-        </div>
 
-        <div class="map-panel">
-             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.638389757087!2d80.2276!3d13.1234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52650000000001%3A0x0!2zMTPCsDA3JzI0LjIiTiA4MMKwMTMnMzkuNCJF!5e0!3m2!1sen!2sin!4v1630000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <!-- Map Section -->
+            <div class="map-panel" style="min-height: 400px; border-radius: 8px; overflow: hidden;">
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.638389757087!2d80.2276!3d13.1234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52650000000001%3A0x0!2zMTPCsDA3JzI0LjIiTiA4MMKwMTMnMzkuNCJF!5e0!3m2!1sen!2sin!4v1630000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
     </div>
 
