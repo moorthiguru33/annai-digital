@@ -1,126 +1,101 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Preloader
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        preloader.style.opacity = '0';
-        setTimeout(() => { preloader.style.display = 'none'; }, 500);
-    }, 2000);
-
-    // 2. Mobile Menu Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if(hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            // Toggle basic styling for active mobile menu via inline CSS for simplicity
-            if(navLinks.classList.contains('active')) {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '70px';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'var(--bg-card)';
-                navLinks.style.padding = '2rem';
-            } else {
-                navLinks.style.display = '';
-            }
-        });
+    const preloader = document.getElementById('preloader');
+    if(preloader) {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+        }, 1500);
     }
 
-    // 3. Typing Text Effect in Hero
-    const typingText = document.getElementById('typing-text');
-    const words = ["NEON SIGNS", "LED DISPLAYS", "3D LETTERS", "BRASS BOARDS"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+    // 2. Typing Effect
+    const typingElement = document.getElementById('typing-text');
+    if(typingElement) {
+        const words = ["NEON SIGNS", "LED BOARDS", "VISITING CARDS", "BILL BOOKS", "STANDIES"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-    if(typingText) {
         function type() {
             const currentWord = words[wordIndex];
-            
             if (isDeleting) {
-                typingText.textContent = currentWord.substring(0, charIndex - 1);
+                typingElement.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
             } else {
-                typingText.textContent = currentWord.substring(0, charIndex + 1);
+                typingElement.textContent = currentWord.substring(0, charIndex + 1);
                 charIndex++;
             }
 
             if (!isDeleting && charIndex === currentWord.length) {
                 isDeleting = true;
-                setTimeout(type, 2000); // Pause at end
+                setTimeout(type, 2000);
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
                 setTimeout(type, 500);
             } else {
-                setTimeout(type, isDeleting ? 100 : 200);
+                setTimeout(type, isDeleting ? 100 : 150);
             }
         }
         type();
     }
 
-    // 4. Stats Counter Animation
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200;
-
-    const animateCounters = () => {
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target + "+";
-                }
-            };
-            updateCount();
+    // 3. Mobile Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if(hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '70px';
+            navLinks.style.right = '0';
+            navLinks.style.background = '#050505';
+            navLinks.style.width = '100%';
+            navLinks.style.padding = '20px';
+            navLinks.style.borderBottom = '1px solid #333';
         });
-    };
-
-    // Trigger counter when hero section is visible
-    let counterTriggered = false;
-    window.addEventListener('scroll', () => {
-        const heroStats = document.querySelector('.hero-stats');
-        if(heroStats) {
-            const position = heroStats.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            
-            if(position < screenPosition && !counterTriggered) {
-                animateCounters();
-                counterTriggered = true;
-            }
-        }
-    });
-
-    // 5. Gallery Filter
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.getAttribute('data-filter');
-
-            galleryItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                    setTimeout(() => { item.style.opacity = '1'; transform = 'scale(1)'}, 100);
-                } else {
-                    item.style.opacity = '0';
-                    setTimeout(() => { item.style.display = 'none'; }, 300);
-                }
-            });
-        });
-    });
+    }
 });
+
+// 4. Price Estimator Logic (Global Functions)
+function updateOptions() {
+    const category = document.getElementById('serviceCategory').value;
+    const signageOpts = document.getElementById('signageOptions');
+    const printingOpts = document.getElementById('printingOptions');
+    const dims = document.getElementById('dims');
+    const qtyBox = document.getElementById('qtyBox');
+
+    if (category === 'signage') {
+        signageOpts.classList.remove('hidden');
+        printingOpts.classList.add('hidden');
+        dims.classList.remove('hidden');
+        qtyBox.classList.add('hidden');
+    } else {
+        signageOpts.classList.add('hidden');
+        printingOpts.classList.remove('hidden');
+        dims.classList.add('hidden'); // Printing usually per piece
+        qtyBox.classList.remove('hidden');
+    }
+}
+
+function calculatePrice() {
+    const category = document.getElementById('serviceCategory').value;
+    let cost = 0;
+
+    if (category === 'signage') {
+        const rate = parseFloat(document.getElementById('materialType').value);
+        const h = parseFloat(document.getElementById('height').value) || 0;
+        const w = parseFloat(document.getElementById('width').value) || 0;
+        const sqft = h * w;
+        cost = sqft * rate;
+    } else {
+        const rate = parseFloat(document.getElementById('printType').value);
+        const qty = parseFloat(document.getElementById('quantity').value) || 0;
+        cost = rate * qty;
+    }
+
+    // Format currency
+    document.getElementById('finalPrice').innerText = "₹ " + cost.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
