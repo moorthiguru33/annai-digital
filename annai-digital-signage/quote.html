@@ -13,34 +13,38 @@
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo"><a href="index.html">Annai<span class="highlight">Digital</span></a></div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
             <a href="index.html" class="btn-nav">Back to Home</a>
         </div>
     </nav>
 
-    <section class="page-header">
+    <section class="section" style="padding-top: 120px;">
         <div class="container">
-            <h1>Smart Price Estimator</h1>
-            <p>Calculate an approximate cost and send it to us on WhatsApp instantly.</p>
-        </div>
-    </section>
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h1>Smart Price Estimator</h1>
+                <p style="color: var(--text-light);">Calculate an approximate cost and send it to us instantly.</p>
+            </div>
 
-    <section class="section">
-        <div class="container">
             <div class="tool-container">
+                <!-- Calculator Side -->
                 <div class="tool-sidebar">
                     <h3><i class="fas fa-calculator"></i> 1. Calculate Cost</h3>
+                    <br>
                     
                     <div class="form-group">
                         <label>Service Category</label>
-                        <select id="serviceCategory" onchange="updateOptions()">
+                        <select id="serviceCategory" class="input-field">
                             <option value="signage">Sign Board / LED</option>
-                            <option value="printing">Paper / Printing</option>
                         </select>
                     </div>
 
                     <div class="form-group" id="signageOptions">
                         <label>Material Type</label>
-                        <select id="materialType">
+                        <select id="materialType" class="input-field" onchange="calculatePrice()">
                             <option value="300">Flex Banner (Normal) - ₹300/sqft</option>
                             <option value="450">Star Flex (High Quality) - ₹450/sqft</option>
                             <option value="1200">LED Board (Basic) - ₹1200/sqft</option>
@@ -49,45 +53,30 @@
                         </select>
                     </div>
 
-                    <div class="form-group hidden" id="printingOptions">
-                        <label>Product Type</label>
-                        <select id="printType">
-                            <option value="1.5">Visiting Cards (per card) - ₹1.5</option>
-                            <option value="5">Pamphlets (A5 Size) - ₹5</option>
-                            <option value="150">Bill Book (Duplicate) - ₹150</option>
-                            <option value="850">Roll-up Standee - ₹850</option>
-                        </select>
-                    </div>
-
-                    <div class="dimensions-group" id="dims">
-                        <div class="form-group">
+                    <div class="dimensions-group" style="display: flex; gap: 1rem;">
+                        <div class="form-group" style="flex:1;">
                             <label>Height (ft)</label>
-                            <input type="number" id="height" value="1" min="1" oninput="calculatePrice()">
+                            <input type="number" id="height" value="1" min="1" class="input-field" oninput="calculatePrice()">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="flex:1;">
                             <label>Width (ft)</label>
-                            <input type="number" id="width" value="1" min="1" oninput="calculatePrice()">
+                            <input type="number" id="width" value="1" min="1" class="input-field" oninput="calculatePrice()">
                         </div>
                     </div>
                     
-                    <div class="form-group hidden" id="qtyBox">
-                        <label>Quantity</label>
-                        <input type="number" id="quantity" value="100" min="1" oninput="calculatePrice()">
-                    </div>
-
-                    <button class="btn btn-secondary w-100" onclick="calculatePrice()">Update Price</button>
+                    <button class="btn btn-outline w-100" onclick="calculatePrice()" style="width: 100%; margin-top: 10px;">Update Price</button>
                 </div>
 
+                <!-- Result Side -->
                 <div class="tool-result">
-                    <div class="result-box">
-                        <span>Estimated Cost</span>
-                        <h2 id="finalPrice">₹ 0.00</h2>
-                        <p class="disclaimer">*Final price may vary based on design & installation.</p>
+                    <div class="result-box text-center">
+                        <span style="color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Estimated Cost</span>
+                        <h2 id="finalPrice">₹ 300</h2>
+                        <p class="disclaimer">*Final price may vary based on design complexity & installation.</p>
                         
-                        <div class="divider"></div>
+                        <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 2rem 0;"></div>
                         
-                        <h3><i class="fab fa-whatsapp"></i> 2. Send to WhatsApp</h3>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px; color: #ccc;">Enter details to receive this quote:</p>
+                        <h3 style="margin-bottom: 1rem;"><i class="fab fa-whatsapp"></i> 2. Send to WhatsApp</h3>
                         
                         <div class="form-group">
                             <input type="text" id="customerName" placeholder="Your Name" class="input-field">
@@ -96,7 +85,7 @@
                             <input type="tel" id="customerPhone" placeholder="Your Mobile Number" class="input-field">
                         </div>
 
-                        <button class="btn btn-whatsapp w-100" onclick="sendQuoteToWhatsapp()">
+                        <button class="btn btn-whatsapp" onclick="sendQuoteToWhatsapp()">
                             <i class="fab fa-whatsapp"></i> Send Quote Request
                         </button>
                     </div>
